@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Calendar() { return <div className="placeholder-page"><span className="eyebrow">PRÓXIMO MARCO</span><h1>Calendário editorial</h1><p>O agendamento será habilitado após conectar as contas profissionais e concluir os testes de publicação pela API da Meta. Nenhuma publicação é disparada neste MVP.</p><Link className="button primary" href="/conteudos">Voltar aos conteúdos</Link></div>; }

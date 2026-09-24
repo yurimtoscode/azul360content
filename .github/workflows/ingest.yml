@@ -1,0 +1,18 @@
+name: Coletar notícias
+on:
+  schedule:
+    - cron: '12 9 * * *'
+  workflow_dispatch:
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar endpoint protegido do Studio
+        env:
+          STUDIO_URL: ${{ secrets.AZUL_STUDIO_URL }}
+          CRON_SECRET: ${{ secrets.AZUL_CRON_SECRET }}
+        run: |
+          test -n "$STUDIO_URL" && test -n "$CRON_SECRET"
+          curl --fail-with-body --show-error --silent --max-time 180 \
+            -X POST "${STUDIO_URL%/}/api/cron/ingest" \
+            -H "Authorization: Bearer $CRON_SECRET"

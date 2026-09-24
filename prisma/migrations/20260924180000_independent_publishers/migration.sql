@@ -1,0 +1,2 @@
+ALTER TABLE "PortalSource" ADD COLUMN "homepageUrl" TEXT NOT NULL DEFAULT '';
+ALTER TABLE "PortalSource" ALTER COLUMN "feedUrl" DROP NOT NULL;
